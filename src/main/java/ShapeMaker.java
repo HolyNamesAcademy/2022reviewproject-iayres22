@@ -1,93 +1,72 @@
 
 public class ShapeMaker {
-    /**
-     * Returns a string that looks like a square with sides of size "size". If size = 5, the square looks like this:
-     * 
-     *     * * * * *
-     *     * * * * *
-     *     * * * * *
-     *     * * * * *
-     *     * * * * *
-     *
-     * @param size length of side
-     * @return a string that looks like the shape above when printed
-     */
+
     public static String PrintSquare(int size)
     {
-        return "";
+        String square = "";
+        for(int i = 0; i < size; i++){
+            for(int b = 0; b < size; b++){
+                square += "* ";
+            }
+            square += "\n";
+        }
+        return square;
     }
 
-    /**
-     * Returns a string that looks like a rectangle with sides of size "length" and "width. If length = 5, width = 4 the rectangle looks like this:
-     * 
-     *     * * * * *
-     *     * * * * *
-     *     * * * * *
-     *     * * * * *
-     *
-     * @param length the width of the rectangle
-     * @param height the height of the rectangle
-     * @return a string that looks like the shape above when printed
-     */
     public static String PrintRectangle(int length, int height)
     {
-        // write your code here
-        return "";
+        String rectangle = "";
+        for(int i = 0; i < height; i++){
+            for(int b = 0; b < length; b++){
+                rectangle += "* ";
+            }
+            rectangle += "\n";
+        }
+        return rectangle;
     }
 
-    /**
-     * Returns a string that looks like a right triangle with sides of size "size". If size = 5, the triangle looks like this:
-     * 
-     *     *
-     *     * *
-     *     * * *
-     *     * * * *
-     *     * * * * *
-     *
-     * @param height the height of the triangle
-     * @return a string that looks like the shape above when printed
-     */
     public static String PrintRightTriangle(int height)
     {
+        String rightTri = "";
+        for(int i = 0; i < height; i++){
+           for(int b = 0; b <= i; b++){
+               rightTri += "* ";
+           }
+           rightTri += "\n";
+        }
         // write your code here
-        return "";
+        return rightTri;
     }
 
-    /**
-     * Returns a string that looks like an inverted right triangle with sides of size "size". If size = 5, the triangle looks like this:
-     * 
-     *     * * * * *
-     *     * * * *
-     *     * * *
-     *     * *
-     *     *
-     *
-     * @param height the height of the triangle
-     * @return a string that looks like the shape above when printed
-     */
     public static String PrintInvertedRightTriangle(int height)
     {
+        String invertedRightTri = "";
+        for(int i = 0; i < height; i++){
+            for(int b = 0; b < height - i; b++){
+                invertedRightTri += "* ";
+            }
+            for(int c = 0; c <= i; c++){
+                invertedRightTri += "  ";
+            }
+            invertedRightTri += "\n";
+        }
         // write your code here
-        return "";
+        return invertedRightTri;
     }
-
-    /**
-     * Returns a string that looks like a backwards right triangle with sides of size "size". If size = 5, the triangle looks like this:
-     * 
-     *             *
-     *           * *
-     *         * * *
-     *       * * * *
-     *     * * * * *
-     *
-     * @param height the height of the triangle
-     * @return a string that looks like the shape above when printed
-     */
 
     public static String PrintBackwardsRightTriangle(int height)
     {
-        // write your code here
-        return "";
+        String backRightTri = "";
+        for(int i = 0; i < height; i++){
+            for(int b = 0; b < height - i; b++){
+                backRightTri += "  ";
+            }
+            for(int c = 0; c <= i; c++){
+                backRightTri += "* ";
+            }
+            backRightTri += "\n";
+        }
+        return backRightTri;
     }
 
     /**
@@ -104,7 +83,16 @@ public class ShapeMaker {
      */
     public static String PrintEquilateralTriangle(int height)
     {
-        // write your code here
-        return "";
+        String equilTri = "";
+        for(int i = 0; i < height; i++){
+            for(int b = 0; b < height - i; b++){
+                equilTri += " ";
+            }
+            for(int c = 0; c <= i; c++){
+                equilTri += "* ";
+            }
+            equilTri += "\n";
+        }
+        return equilTri;
     }
 }
