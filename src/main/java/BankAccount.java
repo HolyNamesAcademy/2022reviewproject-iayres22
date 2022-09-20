@@ -66,7 +66,7 @@ public class BankAccount {
     public double Withdraw(double amount)
     {
     double withdrawAmount = 0;
-    if(amount > 0){
+    if((amount > 0)&&(accountBalance > amount)){
         withdrawAmount = amount;
         accountBalance -= amount;
     }

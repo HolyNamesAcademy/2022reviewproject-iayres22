@@ -85,16 +85,15 @@ String numberList = "";
 
     public static String GetTeamsString(ArrayList<ArrayList<Student>> teams) {
     String teamsInfo = "";
-    for(int i = 0; i < teams.size(); i++){
-        teamsInfo += "Team " + (i+1) +": ";
-        for(ArrayList<Student> team: teams){
-            for(Student student: team){
-                teamsInfo += student.GetName() + ", ";
-            }
-            teamsInfo += "\n";
-        }
-
-    }
+      for(int i = 0; i < teams.size(); i++){
+          int count = 0;
+          teamsInfo += "Team " + (i + 1) + ": ";
+          for(int b = 0; b < teams.get(i).size() - 1; b++){
+              teamsInfo += teams.get(i).get(b).GetName() + ", ";
+              count = b + 1;
+          }
+          teamsInfo += teams.get(i).get(count).GetName() + "\n";
+      }
       return teamsInfo;
     }
 
@@ -107,10 +106,13 @@ String numberList = "";
     }
 
     public static ArrayList<Student> GetStudentsInGradeLevel(ArrayList<Student> students, int gradeLevel) {
-    for(Student student: students){
-        student.SetGradeLevel(student.GetGradeLevel() + 1);
+    ArrayList <Student> gradeLevelStuds = new ArrayList<>();
+        for(Student student: students){
+        if(student.GetGradeLevel() == gradeLevel){
+            gradeLevelStuds.add(student);
+        }
     }
-        return students;
+        return gradeLevelStuds;
     }
 
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
@@ -120,11 +122,14 @@ String numberList = "";
     if(amount > 0){
         for(Student student: students){
             if(student.GetName() == fromStudentName){
-                student.GetBankAccount().Withdraw(amount);
-                fromMoney = true;
-            } else if(student.GetName() == toStudentName){
-                student.GetBankAccount().Deposit(amount);
-                toMoney = true;
+                if(student.GetBankAccount().Withdraw(amount) != 0){
+                    fromMoney = true;
+                }
+            }
+            if((student.GetName() == toStudentName)&& fromMoney){
+                if(student.GetBankAccount().Deposit(amount) > 0) {
+                    toMoney = true;
+                }
             }
         }
         if(toMoney&&fromMoney){
@@ -170,14 +175,16 @@ String numberList = "";
             }
             lowGrade++;
         }
-        for(int i = 0; i < sortedStudent.size(); i++){
-            if(sortedStudent.get(i + 1).GetName().compareToIgnoreCase(sortedStudent.get(i).GetName()) < 0){
-                Student alpha = sortedStudent.get(i + 1);
-                Student beta = sortedStudent.get(i);
-                sortedStudent.remove(sortedStudent.get(i));
-                sortedStudent.remove(sortedStudent.get(i + 1));
-                sortedStudent.add(i, alpha);
-                sortedStudent.add(i + 1, beta);
+        for(int i = 0; i < sortedStudent.size(); i++) {
+            if (sortedStudent.get(i).GetGradeLevel() == sortedStudent.get(i + 1).GetGradeLevel()) {
+                if (sortedStudent.get(i + 1).GetName().compareToIgnoreCase(sortedStudent.get(i).GetName()) < 0) {
+                    Student alpha = sortedStudent.get(i + 1);
+                    Student beta = sortedStudent.get(i);
+                    sortedStudent.remove(sortedStudent.get(i));
+                    sortedStudent.remove(sortedStudent.get(i + 1));
+                    sortedStudent.add(i, alpha);
+                    sortedStudent.add(i + 1, beta);
+                }
             }
         }
         students = sortedStudent;
