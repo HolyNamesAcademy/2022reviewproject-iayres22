@@ -154,9 +154,32 @@ String numberList = "";
      * @param students The list of students to sort.
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
+        int lowGrade = students.get(0).GetGradeLevel();
+        ArrayList <Student> sortedStudent = new ArrayList<>();
+        for(Student student: students) {
+            if (student.GetGradeLevel() < lowGrade) {
+                lowGrade = student.GetGradeLevel();
+            }
+        }
+        for(int i = 0; i < students.size(); i++) {
+            for (Student stud : students) {
+                if (stud.GetGradeLevel() == lowGrade) {
+                    sortedStudent.add(stud);
+                }
 
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+            }
+            lowGrade++;
+        }
+        for(int i = 0; i < sortedStudent.size(); i++){
+            if(sortedStudent.get(i + 1).GetName().compareToIgnoreCase(sortedStudent.get(i).GetName()) < 0){
+                Student alpha = sortedStudent.get(i + 1);
+                Student beta = sortedStudent.get(i);
+                sortedStudent.remove(sortedStudent.get(i));
+                sortedStudent.remove(sortedStudent.get(i + 1));
+                sortedStudent.add(i, alpha);
+                sortedStudent.add(i + 1, beta);
+            }
+        }
+        students = sortedStudent;
     }
 }
