@@ -119,25 +119,32 @@ String numberList = "";
    boolean moneyTransferred = false;
    boolean fromMoney = false;
    boolean toMoney = false;
+   int fromIndex = 0;
+   int toIndex = 1;
     if(amount > 0){
-        for(Student student: students){
-            if(student.GetName() == fromStudentName){
-                if(student.GetBankAccount().Withdraw(amount) != 0){
+        for(int i = 0; i < students.size(); i++){
+            if(students.get(i).GetName() == fromStudentName){
+                if(students.get(i).GetBankAccount().GetBalance() > amount){
                     fromMoney = true;
+                    fromIndex = i;
                 }
             }
-            if((student.GetName() == toStudentName)&& fromMoney){
-                if(student.GetBankAccount().Deposit(amount) > 0) {
+            if(students.get(i).GetName() == toStudentName){
+                if(students.get(i).GetBankAccount() != null){
                     toMoney = true;
+                    toIndex = i;
                 }
-            }
         }
+
         if(toMoney&&fromMoney){
+        students.get(fromIndex).GetBankAccount().Withdraw(amount);
+        students.get(toIndex).GetBankAccount().Deposit(amount);
             moneyTransferred = true;
         }
     }
-    return moneyTransferred;
     }
+    return moneyTransferred;
+}
 
     public static void UpdateGradeLevels(ArrayList<Student> students) {
     for(Student student: students){

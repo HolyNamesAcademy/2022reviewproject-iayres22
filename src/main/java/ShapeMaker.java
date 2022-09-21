@@ -5,10 +5,10 @@ public class ShapeMaker {
     {
         String square = "";
         for(int i = 0; i < size; i++){
-            for(int b = 0; b < size; b++){
+            for(int b = 0; b < size - 1; b++){
                 square += "* ";
             }
-            square += "\n";
+            square += "*\n";
         }
         return square;
     }
@@ -17,10 +17,10 @@ public class ShapeMaker {
     {
         String rectangle = "";
         for(int i = 0; i < height; i++){
-            for(int b = 0; b < length; b++){
+            for(int b = 0; b < length - 1; b++){
                 rectangle += "* ";
             }
-            rectangle += "\n";
+            rectangle += "*\n";
         }
         return rectangle;
     }
@@ -29,10 +29,10 @@ public class ShapeMaker {
     {
         String rightTri = "";
         for(int i = 0; i < height; i++){
-           for(int b = 0; b <= i; b++){
+           for(int b = 0; b <= i - 1; b++){
                rightTri += "* ";
            }
-           rightTri += "\n";
+           rightTri += "*\n";
         }
         // write your code here
         return rightTri;
@@ -42,13 +42,10 @@ public class ShapeMaker {
     {
         String invertedRightTri = "";
         for(int i = 0; i < height; i++){
-            for(int b = 0; b < height - i; b++){
+            for(int b = 0; b < height - (i+1); b++){
                 invertedRightTri += "* ";
             }
-            for(int c = 0; c <= i; c++){
-                invertedRightTri += "  ";
-            }
-            invertedRightTri += "\n";
+            invertedRightTri += "*\n";
         }
         // write your code here
         return invertedRightTri;
@@ -58,13 +55,13 @@ public class ShapeMaker {
     {
         String backRightTri = "";
         for(int i = 0; i < height; i++){
-            for(int b = 0; b < height - i; b++){
+            for(int b = 0; b < height - (i+1); b++){
                 backRightTri += "  ";
             }
-            for(int c = 0; c <= i; c++){
+            for(int c = 0; c <= i - 1; c++){
                 backRightTri += "* ";
             }
-            backRightTri += "\n";
+            backRightTri += "*\n";
         }
         return backRightTri;
     }
@@ -85,13 +82,13 @@ public class ShapeMaker {
     {
         String equilTri = "";
         for(int i = 0; i < height; i++){
-            for(int b = 0; b < height - i; b++){
+            for(int b = 0; b < height - (i+1); b++){
                 equilTri += " ";
             }
-            for(int c = 0; c <= i; c++){
+            for(int c = 0; c <= i - 1; c++){
                 equilTri += "* ";
             }
-            equilTri += "\n";
+            equilTri += "*\n";
         }
         return equilTri;
     }
