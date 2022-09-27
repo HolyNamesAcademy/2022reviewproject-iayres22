@@ -10,7 +10,13 @@ public class ArrayListPracticeMain {
         // Use this space to test ArrayListPractice
         ArrayList<Integer> numbers = CreateIntegerArrayList();
         ArrayList<Student> students = CreateStudentArrayList();
-
+        for(Student student: students){
+            System.out.println(student.GetGradeLevel());
+        }
+        ArrayListPractice.UpdateGradeLevels(students);
+        for(Student student: students){
+            System.out.println(student.GetGradeLevel());
+        }
         /* Call ArrayListPractice functions here. For example:
 
         String favoriteColor = ArrayListPractice.GetFavoriteColorOfStudent(students, "Madison");

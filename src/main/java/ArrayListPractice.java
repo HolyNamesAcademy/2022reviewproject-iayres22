@@ -167,33 +167,25 @@ String numberList = "";
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
         int lowGrade = students.get(0).GetGradeLevel();
+        boolean moreThanOne = false;
         ArrayList <Student> sortedStudent = new ArrayList<>();
-        for(Student student: students) {
-            if (student.GetGradeLevel() < lowGrade) {
+        for(Student student: students){
+            if(student.GetGradeLevel() < lowGrade){
                 lowGrade = student.GetGradeLevel();
             }
         }
-        for(int i = 0; i < students.size(); i++) {
-            for (Student stud : students) {
-                if (stud.GetGradeLevel() == lowGrade) {
-                    sortedStudent.add(stud);
-                }
+        for(Student student: students){
 
-            }
-            lowGrade++;
         }
-        for(int i = 0; i < sortedStudent.size(); i++) {
-            if (sortedStudent.get(i).GetGradeLevel() == sortedStudent.get(i + 1).GetGradeLevel()) {
-                if (sortedStudent.get(i + 1).GetName().compareToIgnoreCase(sortedStudent.get(i).GetName()) < 0) {
-                    Student alpha = sortedStudent.get(i + 1);
-                    Student beta = sortedStudent.get(i);
-                    sortedStudent.remove(sortedStudent.get(i));
-                    sortedStudent.remove(sortedStudent.get(i + 1));
-                    sortedStudent.add(i, alpha);
-                    sortedStudent.add(i + 1, beta);
+        for(int i = 0; i < students.size(); i++){
+            while(sortedStudent.size() <= students.size()) {
+                if (students.get(i).GetGradeLevel() == lowGrade) {
+                    sortedStudent.add(students.get(i));
+                }
+                if (students.get(i).GetGradeLevel() == students.get(i + 1).GetGradeLevel()) {
+                    moreThanOne = true;
                 }
             }
         }
-        students = sortedStudent;
     }
 }
